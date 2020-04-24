@@ -1,0 +1,58 @@
+{
+	"name": "inspectable",
+	"version": "0.0.1",
+	"description": "Make the output of a class instance in the console meaningful",
+	"license": "MIT",
+	"author": {
+		"name": "Vladlen (Negezor)",
+		"email": "negezor@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/negezor/inspectable.git"
+	},
+	"homepage": "https://github.com/negezor/inspectable#readme",
+	"bugs": "https://github.com/negezor/inspectable/issues",
+	"keywords": [
+		"inspect",
+		"inspectable",
+		"console",
+		"typescript"
+	],
+	"files": [
+		"lib"
+	],
+	"main": "lib/index",
+	"module": "lib/index.mjs",
+	"types": "lib/index.d.ts",
+	"engines": {
+		"node": ">=12.0.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^25.2.1",
+		"@types/node": "^13.13.2",
+		"@typescript-eslint/eslint-plugin": "^2.29.0",
+		"@typescript-eslint/parser": "^2.29.0",
+		"eslint": "6.8.0",
+		"eslint-config-airbnb-base": "^14.1.0",
+		"eslint-plugin-import": "^2.20.2",
+		"jest": "^25.4.0",
+		"rollup": "^2.7.2",
+		"rollup-plugin-typescript2": "^0.27.0",
+		"ts-jest": "^25.4.0",
+		"typedoc": "^0.17.4",
+		"typedoc-plugin-markdown": "^2.2.17",
+		"typescript": "^3.8.3"
+	},
+	"scripts": {
+		"prepare": "yarn run rollup:build && yarn run test",
+		"build": "yarn rollup:build",
+		"watch": "yarn rollup:watch",
+		"rollup:build": "rollup -c",
+		"rollup:watch": "yarn run rollup:build --watch",
+		"test": "yarn run test:jest && yarn run test:eslint",
+		"test:jest": "jest --config jest.config.json --no-cache",
+		"test:eslint": "eslint --ext .ts --ignore-path .gitignore src/**/*.ts",
+		"docs:generate": "typedoc --theme markdown --out docs --excludeExternals --readme none src"
+	}
+}

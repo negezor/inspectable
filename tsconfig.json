@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"target": "ES2019",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"strict": true,
+		"noEmit": true,
+		"declaration": true,
+		"strictNullChecks": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}
