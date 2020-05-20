@@ -1,6 +1,6 @@
 {
 	"name": "inspectable",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Make the output of a class instance in the console meaningful",
 	"license": "MIT",
 	"author": {
