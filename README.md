@@ -51,30 +51,3 @@ console.log(request);
 //   method: 'pay'
 // }
 ```
-
-Or
-
-```ts
-import { inspectable, kInspectPayload } from 'inspectable';
-
-class APIRequest {
-	public method = 'pay';
-
-	private token = 'super-private';
-
-	public [kInspectPayload]() {
-		return {
-			method: this.method
-		};
-	}
-}
-
-inspectable(APIRequest);
-
-const request = new APIRequest();
-
-console.log(request);
-// APIRequest {
-//   method: 'pay'
-// }
-```

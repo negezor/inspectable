@@ -8,13 +8,10 @@ import {
 	NodeInspectContext
 } from './types';
 
-import { kInspectPayload } from './constants';
-
 export const inspectable = <T, P = object>(
 	klass: Constructor<T>,
 	{
-		// @ts-ignore
-		serialize = (instance): P => instance[kInspectPayload]?.() ?? {},
+		serialize = (): P => ({} as P),
 		stringify = (instance, payload, context): string => (
 			`${context.stylize(klass.name, 'special')} ${context.inspect(payload)}`
 		)
