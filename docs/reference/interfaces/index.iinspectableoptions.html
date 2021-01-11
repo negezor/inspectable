@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for inspectable">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -38,8 +39,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,13 +50,13 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../index.html">Globals</a>
+					<a href="../index.html">inspectable</a>
 				</li>
 				<li>
-					<a href="../modules/_types_.html">&quot;types&quot;</a>
+					<a href="../modules/index.html">index</a>
 				</li>
 				<li>
-					<a href="_types_.iinspectableoptions.html">IInspectableOptions</a>
+					<a href="index.iinspectableoptions.html">IInspectableOptions</a>
 				</li>
 			</ul>
 			<h1>Interface IInspectableOptions&lt;T, P&gt;</h1>
@@ -93,8 +92,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iinspectableoptions.html#serialize" class="tsd-kind-icon">serialize</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.iinspectableoptions.html#stringify" class="tsd-kind-icon">stringify</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="index.iinspectableoptions.html#serialize" class="tsd-kind-icon">serialize</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="index.iinspectableoptions.html#stringify" class="tsd-kind-icon">stringify</a></li>
 							</ul>
 						</section>
 					</div>
@@ -105,20 +104,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="serialize" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> serialize</h3>
-					<div class="tsd-signature tsd-kind-icon">serialize<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#inspectableserialize" class="tsd-signature-type">InspectableSerialize</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">serialize<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../modules/types.html#inspectableserialize" class="tsd-signature-type" data-tsd-kind="Type alias">InspectableSerialize</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/negezor/inspectable/blob/a9e6544/src/types.ts#L23">types.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/negezor/inspectable/blob/c792db0/src/types.ts#L26">types.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="stringify" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stringify</h3>
-					<div class="tsd-signature tsd-kind-icon">stringify<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#inspectablestringify" class="tsd-signature-type">InspectableStringify</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">stringify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../modules/types.html#inspectablestringify" class="tsd-signature-type" data-tsd-kind="Type alias">InspectableStringify</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/negezor/inspectable/blob/a9e6544/src/types.ts#L24">types.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/negezor/inspectable/blob/c792db0/src/types.ts#L27">types.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -127,51 +126,69 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../index.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../index.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/_index_.html">&quot;index&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_inspectable_.html">&quot;inspectable&quot;</a>
+						<a href="../modules/decorators.html">decorators</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_types_.html">&quot;types&quot;</a>
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/inspectable.html">inspectable</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/types.html">types</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_types_.iinspectablecontext.html" class="tsd-kind-icon">IInspectable<wbr>Context</a>
+						<a href="index.iinspectablecontext.html" class="tsd-kind-icon">IInspectable<wbr>Context</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_types_.iinspectableoptions.html" class="tsd-kind-icon">IInspectable<wbr>Options</a>
+						<a href="index.iinspectableoptions.html" class="tsd-kind-icon">IInspectable<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.iinspectableoptions.html#serialize" class="tsd-kind-icon">serialize</a>
+								<a href="index.iinspectableoptions.html#serialize" class="tsd-kind-icon">serialize</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.iinspectableoptions.html#stringify" class="tsd-kind-icon">stringify</a>
+								<a href="index.iinspectableoptions.html#stringify" class="tsd-kind-icon">stringify</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/_types_.html#constructor" class="tsd-kind-icon">Constructor</a>
+						<a href="../modules/index.html#constructor" class="tsd-kind-icon">Constructor</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/_types_.html#inspectableserialize" class="tsd-kind-icon">Inspectable<wbr>Serialize</a>
+						<a href="../modules/index.html#inspectableserialize" class="tsd-kind-icon">Inspectable<wbr>Serialize</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/_types_.html#inspectablestringify" class="tsd-kind-icon">Inspectable<wbr>Stringify</a>
+						<a href="../modules/index.html#inspectablestringify" class="tsd-kind-icon">Inspectable<wbr>Stringify</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_types_.html#nodeinspectcontext" class="tsd-kind-icon">Node<wbr>Inspect<wbr>Context</a>
+						<a href="../modules/index.html#inspectedclass" class="tsd-kind-icon">Inspected<wbr>Class</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/index.html#nodeinspectcontext" class="tsd-kind-icon">Node<wbr>Inspect<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/index.html#kinspectproperties" class="tsd-kind-icon">k<wbr>Inspect<wbr>Properties</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/index.html#inspect" class="tsd-kind-icon">Inspect</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="../modules/index.html#inspectable" class="tsd-kind-icon">Inspectable</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="../modules/index.html#inspectable-1" class="tsd-kind-icon">inspectable</a>
 					</li>
 				</ul>
 			</nav>
@@ -183,6 +200,8 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
@@ -199,6 +218,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
