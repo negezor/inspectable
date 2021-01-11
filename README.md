@@ -51,3 +51,23 @@ console.log(request);
 //   method: 'pay'
 // }
 ```
+
+### Decorators
+```ts
+import { Inspectable, Inspect } from 'inspectable';
+
+@Inspectable({/* options */})
+class APIRequest {
+	@Inspect
+	public method = 'pay';
+
+	private token = 'super-private';
+}
+
+const request = new APIRequest();
+
+console.log(request);
+// APIRequest {
+//   method: 'pay'
+// }
+```
