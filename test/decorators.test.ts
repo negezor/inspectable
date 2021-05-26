@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import { inspect } from 'util';
 
-import { Inspectable, Inspect } from '..';
+import { Inspectable, Inspect } from '../src';
 
 const createFixtureClass = (): new () => { method: string; token: string } => (
 	class Request {

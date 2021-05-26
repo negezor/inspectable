@@ -1,6 +1,6 @@
 import { inspect } from 'util';
 
-import { inspectable } from '..';
+import { inspectable } from '../src';
 
 const createFixtureClass = (): new () => { method: string; token: string } => (
 	class Request {
