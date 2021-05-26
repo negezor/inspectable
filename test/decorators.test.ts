@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { inspect } from 'util';
 
 import { Inspectable, Inspect } from '..';

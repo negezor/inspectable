@@ -54,6 +54,7 @@ console.log(request);
 
 ### Decorators
 ```ts
+import 'reflect-metadata';
 import { Inspectable, Inspect } from 'inspectable';
 
 @Inspectable({/* options */})

@@ -14,7 +14,7 @@ export const Inspectable = <T, P = object>(
 			serialize(instance) {
 				const payload = (options.serialize?.(instance) || {}) as P;
 
-				for (const property of (klass[kInspectProperties] || [])) {
+				for (const property of (Reflect.getMetadata(kInspectProperties, instance) || [])) {
 					payload[property as keyof P] = (instance as unknown as P)[property as keyof P];
 				}
 
@@ -30,9 +30,15 @@ export const Inspect = (
 	target: InspectedClass,
 	property: string
 ): void => {
-	if (target.constructor[kInspectProperties] === undefined) {
-		target.constructor[kInspectProperties] = [];
+	const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as string[];
+
+	if (metadata.length === 0) {
+		Reflect.defineMetadata(
+			kInspectProperties,
+			metadata,
+			target
+		);
 	}
 
-	target.constructor[kInspectProperties].push(property);
+	metadata.push(property);
 };
