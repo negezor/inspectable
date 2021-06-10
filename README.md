@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://www.npmjs.com/package/inspectable"><img src="https://img.shields.io/npm/v/inspectable.svg?style=flat-square" alt="NPM version"></a>
-<a href="https://travis-ci.org/negezor/inspectable"><img src="https://img.shields.io/travis/negezor/inspectable.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://travis-ci.com/negezor/inspectable"><img src="https://img.shields.io/travis/negezor/inspectable.svg?style=flat-square" alt="Build Status"></a>
 <a href="https://www.npmjs.com/package/inspectable"><img src="https://img.shields.io/npm/dt/inspectable.svg?style=flat-square" alt="NPM downloads"></a>
 </p>
 
