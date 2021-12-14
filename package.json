@@ -53,6 +53,11 @@
 	"peerDependencies": {
 		"reflect-metadata": "^0.1.13"
 	},
+	"peerDependenciesMeta": {
+		"reflect-metadata": {
+			"optional": true
+		}
+	},
 	"scripts": {
 		"prepare": "yarn run rollup:build && yarn run test",
 		"build": "yarn rollup:build",
