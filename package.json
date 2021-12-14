@@ -62,6 +62,7 @@
 		"prepare": "yarn run rollup:build && yarn run test",
 		"build": "yarn rollup:build",
 		"watch": "yarn rollup:watch",
+		"clean": "rm -rf lib",
 		"rollup:build": "rollup -c",
 		"rollup:watch": "yarn run rollup:build --watch",
 		"test": "yarn run test:jest && yarn run lint",
