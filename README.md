@@ -12,15 +12,15 @@ Inspectable - Make the output of a class instance in the console meaningful
 ## Installation
 > **[Node.js](https://nodejs.org/) 12.0.0 or newer is required**
 
-### Yarn
+### NPM
 Recommended
 ```
-yarn add inspectable
+npm i inspectable
 ```
 
-### NPM
+### Yarn
 ```
-npm i inspectable
+yarn add inspectable
 ```
 
 ## Example usage
