@@ -14,7 +14,8 @@ export const Inspectable = <T, P = object>(
 			serialize(instance) {
 				const payload = (options.serialize?.(instance) || {}) as P;
 
-				for (const property of (Reflect.getMetadata(kInspectProperties, instance) || [])) {
+				// eslint-disable-next-line @typescript-eslint/ban-types, max-len
+				for (const property of (Reflect.getMetadata(kInspectProperties, instance as Object) || [])) {
 					payload[property as keyof P] = (instance as unknown as P)[property as keyof P];
 				}
 
