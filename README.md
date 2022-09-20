@@ -4,24 +4,32 @@
 <a href="https://www.npmjs.com/package/inspectable"><img src="https://img.shields.io/npm/dt/inspectable.svg?style=flat-square" alt="NPM downloads"></a>
 </p>
 
-Inspectable - Make the output of a class instance in the console meaningful
+**Inspectable** - Make the output of a class instance in the console meaningful
 
 | 📖 [Documentation](docs/) |
 |---------------------------|
 
+## Features
+
+1. **Self-Sufficient.** The library has zero dependencies (except decorators support).
+2. **Reliable.** The library is written in **TypeScript** and covered by tests.
+3. **Modern.** The library comes with native ESM support
+
 ## Installation
 > **[Node.js](https://nodejs.org/) 12.0.0 or newer is required**
 
-### NPM
-Recommended
-```
-npm i inspectable
-```
-
-### Yarn
-```
-yarn add inspectable
-```
+- **Using `npm`** (recommended)
+	```shell
+	npm i inspectable
+	```
+- **Using `Yarn`**
+  ```shell
+  yarn add inspectable
+  ```
+- **Using `pnpm`**
+  ```shell
+  pnpm add inspectable
+  ```
 
 ## Example usage
 ```ts
