@@ -16,7 +16,7 @@ export const Inspectable = <T, P = object>(
 
 				// eslint-disable-next-line @typescript-eslint/ban-types, max-len
 				for (const metadata of (Reflect.getMetadata(kInspectProperties, instance as Object) || [])) {
-					const { property, ...propertyOptions } = metadata as IInspectableMetadata;
+					const { property, options: propertyOptions } = metadata as IInspectableMetadata;
 
 					let value = (instance as unknown as P)[property as keyof P];
 
@@ -39,13 +39,15 @@ export const Inspectable = <T, P = object>(
 	}
 );
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Inspect = (options: Record<string, any> = {}) => (
 	(
 		target: InspectedClass,
 		property: string
 	): void => {
+		// eslint-disable-next-line max-len
 		const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as IInspectableMetadata[];
-	
+
 		if (metadata.length === 0) {
 			Reflect.defineMetadata(
 				kInspectProperties,
@@ -53,10 +55,10 @@ export const Inspect = (options: Record<string, any> = {}) => (
 				target
 			);
 		}
-	
+
 		metadata.push({
 			property,
-			...options
+			options
 		});
 	}
 );

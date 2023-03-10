@@ -35,8 +35,7 @@ export interface IInspectOptions {
 	nonNullable?: boolean;
 }
 
-export interface IInspectableMetadata extends IInspectOptions {
+export interface IInspectableMetadata {
 	property: string;
-
-	[key: string]: any;
+	options: IInspectOptions;
 }
