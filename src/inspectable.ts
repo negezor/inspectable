@@ -6,7 +6,7 @@ import type {
 
     Constructor,
     NodeInspectContext,
-} from './types.js';
+} from './types';
 
 export const inspectable = <T, P = object>(
     klass: Constructor<T>,

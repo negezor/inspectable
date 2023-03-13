@@ -1,3 +1,3 @@
-export * from './inspectable.js';
-export * from './decorators.js';
-export * from './types.js';
+export * from './inspectable';
+export * from './decorators';
+export * from './types';

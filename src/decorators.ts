@@ -1,11 +1,11 @@
-import { inspectable } from './inspectable.js';
+import { inspectable } from './inspectable';
 import type {
     IInspectableMetadata,
     IInspectableOptions,
     IInspectNormalizedOptions,
     IInspectOptions,
     InspectedClass,
-} from './types.js';
+} from './types';
 
 export const kInspectProperties = Symbol('kInspectProperties');
 
