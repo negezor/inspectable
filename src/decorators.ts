@@ -1,16 +1,16 @@
-import { inspectable } from './inspectable';
-import {
+import { inspectable } from './inspectable.js';
+import type {
     IInspectableMetadata,
     IInspectableOptions,
     IInspectNormalizedOptions,
     IInspectOptions,
-    InspectedClass
-} from './types';
+    InspectedClass,
+} from './types.js';
 
 export const kInspectProperties = Symbol('kInspectProperties');
 
 export const Inspectable = <T, P = object>(
-    options: IInspectableOptions<T, P> = {}
+    options: IInspectableOptions<T, P> = {},
 ) => (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (klass: InspectedClass): void => {
@@ -38,7 +38,7 @@ export const Inspectable = <T, P = object>(
                 }
 
                 return payload;
-            }
+            },
         });
 
         return klass;
@@ -47,17 +47,17 @@ export const Inspectable = <T, P = object>(
 
 const normalizeInspectOptions = (
     property: string,
-    options: IInspectOptions
+    options: IInspectOptions,
 ): IInspectNormalizedOptions => ({
     compute: options.compute ?? false,
     nullable: options.nullable ?? true,
-    as: options.as ?? property
+    as: options.as ?? property,
 });
 
 export const Inspect = (options: IInspectOptions = {}) => (
     (
         target: InspectedClass,
-        property: string
+        property: string,
     ): void => {
         // eslint-disable-next-line max-len
         const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as IInspectableMetadata[];
@@ -66,13 +66,13 @@ export const Inspect = (options: IInspectOptions = {}) => (
             Reflect.defineMetadata(
                 kInspectProperties,
                 metadata,
-                target
+                target,
             );
         }
 
         metadata.push({
             property,
-            options: normalizeInspectOptions(property, options)
+            options: normalizeInspectOptions(property, options),
         });
     }
 );

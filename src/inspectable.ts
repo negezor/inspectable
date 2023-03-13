@@ -1,12 +1,12 @@
 import { inspect } from 'util';
 
-import {
+import type {
     IInspectableOptions,
     IInspectableContext,
 
     Constructor,
-    NodeInspectContext
-} from './types';
+    NodeInspectContext,
+} from './types.js';
 
 export const inspectable = <T, P = object>(
     klass: Constructor<T>,
@@ -14,8 +14,8 @@ export const inspectable = <T, P = object>(
         serialize = (): P => ({} as P),
         stringify = (instance, payload, context): string => (
             `${context.stylize(klass.name, 'special')} ${context.inspect(payload)}`
-        )
-    }: IInspectableOptions<T, P> = {}
+        ),
+    }: IInspectableOptions<T, P> = {},
 ): void => {
     Object.defineProperty(klass.prototype, inspect.custom, {
         value(depth: number, inspectContext: NodeInspectContext) {
@@ -25,14 +25,14 @@ export const inspectable = <T, P = object>(
                     inspect(payload, {
                         ...inspectContext,
 
-                        compact: options?.compact ?? false
+                        compact: options?.compact ?? false,
                     })
-                )
+                ),
             };
 
             const payload = serialize(this);
 
             return stringify(this, payload, context);
-        }
+        },
     });
 };
