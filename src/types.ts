@@ -28,8 +28,8 @@ export interface IInspectableOptions<T, P> {
 }
 
 export interface IInspectOptions {
-	/** Should we **recompute** the value if it is a function? */
-	execute?: boolean;
+	/** Should we **compute** the value if it is a function? */
+	compute?: boolean;
 
 	/** Should we output the value if it is nullable? */
 	nullable?: boolean;

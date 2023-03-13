@@ -26,7 +26,7 @@ export const Inspectable = <T, P = object>(
 
 					let value = (instance as unknown as P)[property as keyof P];
 
-					if (typeof value === 'function' && propertyOptions.execute) {
+					if (typeof value === 'function' && propertyOptions.compute) {
 						value = value();
 					}
 
@@ -46,7 +46,7 @@ export const Inspectable = <T, P = object>(
 );
 
 const normalizeInspectOptions = (options: IInspectOptions): IInspectNormalizedOptions => ({
-	execute: options.execute ?? false,
+	compute: options.compute ?? false,
 	nullable: options.nullable ?? true
 });
 
