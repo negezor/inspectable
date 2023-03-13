@@ -31,9 +31,11 @@ export interface IInspectOptions {
 	/** Should we **recompute** the value if it is a function? */
 	execute?: boolean;
 
-	/** Should we **only** output the value if it is non-nullable? */
-	nonNullable?: boolean;
+	/** Should we output the value if it is nullable? */
+	nullable?: boolean;
 }
+
+export type IInspectNormalizedOptions = Required<IInspectOptions>;
 
 export interface IInspectableMetadata {
 	property: string;

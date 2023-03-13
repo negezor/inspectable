@@ -1,5 +1,11 @@
 import { inspectable } from './inspectable';
-import { IInspectableMetadata, IInspectableOptions, InspectedClass } from './types';
+import {
+	IInspectableMetadata,
+	IInspectableOptions,
+	IInspectNormalizedOptions,
+	IInspectOptions,
+	InspectedClass
+} from './types';
 
 export const kInspectProperties = Symbol('kInspectProperties');
 
@@ -20,12 +26,12 @@ export const Inspectable = <T, P = object>(
 
 					let value = (instance as unknown as P)[property as keyof P];
 
-					if (propertyOptions.nonNullable && !value) {
-						continue;
-					}
-
 					if (typeof value === 'function' && propertyOptions.execute) {
 						value = value();
+					}
+
+					if (!propertyOptions.nullable && !value) {
+						continue;
 					}
 
 					payload[property as keyof P] = value;
@@ -39,8 +45,12 @@ export const Inspectable = <T, P = object>(
 	}
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Inspect = (options: Record<string, any> = {}) => (
+const normalizeInspectOptions = (options: IInspectOptions): IInspectNormalizedOptions => ({
+	execute: options.execute ?? false,
+	nullable: options.nullable ?? true
+});
+
+export const Inspect = (options: IInspectOptions = {}) => (
 	(
 		target: InspectedClass,
 		property: string
@@ -58,7 +68,7 @@ export const Inspect = (options: Record<string, any> = {}) => (
 
 		metadata.push({
 			property,
-			options
+			options: normalizeInspectOptions(options)
 		});
 	}
 );
