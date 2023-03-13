@@ -1,13 +1,13 @@
 {
-	"compilerOptions": {
-		"target": "ES2019",
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"strict": true,
-		"noEmit": true,
-		"declaration": true,
-		"strictNullChecks": true,
-		"experimentalDecorators": true,
-		"forceConsistentCasingInFileNames": true
-	}
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "strict": true,
+        "noEmit": true,
+        "declaration": true,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true
+    }
 }

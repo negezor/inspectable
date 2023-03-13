@@ -19,9 +19,9 @@
 > **[Node.js](https://nodejs.org/) 12.0.0 or newer is required**
 
 - **Using `npm`** (recommended)
-	```shell
-	npm i inspectable
-	```
+    ```shell
+    npm i inspectable
+    ```
 - **Using `Yarn`**
   ```shell
   yarn add inspectable
@@ -36,9 +36,9 @@
 import { inspectable } from 'inspectable';
 
 class APIRequest {
-	public method = 'pay';
+    public method = 'pay';
 
-	private token = 'super-private';
+    private token = 'super-private';
 }
 
 const request = new APIRequest();
@@ -47,11 +47,11 @@ console.log(request);
 // APIRequest { method: 'pay', token: 'super-private' }
 
 inspectable(APIRequest, {
-	serialize(instance) {
-		return {
-			method: instance.method
-		};
-	}
+    serialize(instance) {
+        return {
+            method: instance.method
+        };
+    }
 });
 
 console.log(request);
@@ -67,10 +67,10 @@ import { Inspectable, Inspect } from 'inspectable';
 
 @Inspectable({/* options */})
 class APIRequest {
-	@Inspect
-	public method = 'pay';
+    @Inspect
+    public method = 'pay';
 
-	private token = 'super-private';
+    private token = 'super-private';
 }
 
 const request = new APIRequest();

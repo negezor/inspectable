@@ -16,32 +16,32 @@ const lib = pathJoin(rootDir, 'lib');
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
-	input: pathJoin(src, 'index.ts'),
-	plugins: [
-		typescriptPlugin({
-			cacheRoot,
+    input: pathJoin(src, 'index.ts'),
+    plugins: [
+        typescriptPlugin({
+            cacheRoot,
 
-			useTsconfigDeclarationDir: false,
+            useTsconfigDeclarationDir: false,
 
-			tsconfigOverride: {
-				outDir: lib,
-				rootDir: src,
-				include: [src]
-			}
-		})
-	],
-	external: [
-		'util'
-	],
-	output: [
-		{
-			file: pathJoin(lib, 'index.js'),
-			format: 'cjs',
-			exports: 'named'
-		},
-		{
-			file: pathJoin(lib, 'index.mjs'),
-			format: 'esm'
-		}
-	]
+            tsconfigOverride: {
+                outDir: lib,
+                rootDir: src,
+                include: [src]
+            }
+        })
+    ],
+    external: [
+        'util'
+    ],
+    output: [
+        {
+            file: pathJoin(lib, 'index.js'),
+            format: 'cjs',
+            exports: 'named'
+        },
+        {
+            file: pathJoin(lib, 'index.mjs'),
+            format: 'esm'
+        }
+    ]
 });
