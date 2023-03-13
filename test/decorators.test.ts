@@ -9,6 +9,12 @@ const createFixtureClass = (): new () => { method: string; token: string } => (
 		public method = 'test';
 
 		public token = 'super-secret';
+
+		public signal = null;
+
+		public canRequest() {
+			return Boolean(this.token);
+		}
 	}
 );
 
@@ -58,5 +64,53 @@ describe('Decorators', (): void => {
 		expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
 	});
 
-	// TODO: add tests for `Inspect` with options
+	it('should work if inspect with non nullable', (): void => {
+		const Klass = createFixtureClass();
+
+		Inspectable({})(Klass);
+
+		Inspect({ nullable: false })(Klass.prototype, 'signal');
+
+		expect(inspect(new Klass())).toStrictEqual('Request {}');
+	});
+
+	it('should work if inspect with nullable', (): void => {
+		const Klass = createFixtureClass();
+
+		Inspectable({})(Klass);
+
+		Inspect({ nullable: true })(Klass.prototype, 'signal');
+
+		expect(inspect(new Klass())).toStrictEqual('Request {\n  signal: null\n}');
+	});
+
+	it('should work inspect with compute', (): void => {
+		const Klass = createFixtureClass();
+
+		Inspectable({})(Klass);
+
+		Inspect({ compute: true })(Klass.prototype, 'canRequest');
+
+		expect(inspect(new Klass())).toStrictEqual('Request {\n  canRequest: true\n}');
+	});
+
+	it('shouldn\'t work inspect with disabled compute', (): void => {
+		const Klass = createFixtureClass();
+
+		Inspectable({})(Klass);
+
+		Inspect({ compute: false })(Klass.prototype, 'canRequest');
+
+		expect(inspect(new Klass())).toStrictEqual('Request {\n  canRequest: [Function: canRequest]\n}');
+	});
+
+	it('should work inspect with alias', (): void => {
+		const Klass = createFixtureClass();
+
+		Inspectable({})(Klass);
+
+		Inspect({ as: 'type' })(Klass.prototype, 'method');
+
+		expect(inspect(new Klass())).toStrictEqual('Request {\n  type: \'test\'\n}');
+	});
 });
