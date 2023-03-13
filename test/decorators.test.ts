@@ -53,8 +53,10 @@ describe('Decorators', (): void => {
 
 		Inspectable({})(Klass);
 
-		Inspect(Klass.prototype, 'method');
+		Inspect()(Klass.prototype, 'method');
 
 		expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
 	});
+
+	// TODO: add tests for `Inspect` with options
 });

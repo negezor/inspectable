@@ -1,5 +1,5 @@
 import { inspectable } from './inspectable';
-import { IInspectableOptions, InspectedClass } from './types';
+import { IInspectableMetadata, IInspectableOptions, InspectedClass } from './types';
 
 export const kInspectProperties = Symbol('kInspectProperties');
 
@@ -15,8 +15,20 @@ export const Inspectable = <T, P = object>(
 				const payload = (options.serialize?.(instance) || {}) as P;
 
 				// eslint-disable-next-line @typescript-eslint/ban-types, max-len
-				for (const property of (Reflect.getMetadata(kInspectProperties, instance as Object) || [])) {
-					payload[property as keyof P] = (instance as unknown as P)[property as keyof P];
+				for (const metadata of (Reflect.getMetadata(kInspectProperties, instance as Object) || [])) {
+					const { property, options: propertyOptions } = metadata as IInspectableMetadata;
+
+					let value = (instance as unknown as P)[property as keyof P];
+
+					if (propertyOptions.nonNullable && !value) {
+						continue;
+					}
+
+					if (typeof value === 'function' && propertyOptions.execute) {
+						value = value();
+					}
+
+					payload[property as keyof P] = value;
 				}
 
 				return payload;
@@ -27,19 +39,26 @@ export const Inspectable = <T, P = object>(
 	}
 );
 
-export const Inspect = (
-	target: InspectedClass,
-	property: string
-): void => {
-	const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as string[];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Inspect = (options: Record<string, any> = {}) => (
+	(
+		target: InspectedClass,
+		property: string
+	): void => {
+		// eslint-disable-next-line max-len
+		const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as IInspectableMetadata[];
 
-	if (metadata.length === 0) {
-		Reflect.defineMetadata(
-			kInspectProperties,
-			metadata,
-			target
-		);
+		if (metadata.length === 0) {
+			Reflect.defineMetadata(
+				kInspectProperties,
+				metadata,
+				target
+			);
+		}
+
+		metadata.push({
+			property,
+			options
+		});
 	}
-
-	metadata.push(property);
-};
+);

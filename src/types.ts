@@ -26,3 +26,16 @@ export interface IInspectableOptions<T, P> {
 	serialize?: InspectableSerialize<T, P>;
 	stringify?: InspectableStringify<T, P>;
 }
+
+export interface IInspectOptions {
+	/** Should we **recompute** the value if it is a function? */
+	execute?: boolean;
+
+	/** Should we **only** output the value if it is non-nullable? */
+	nonNullable?: boolean;
+}
+
+export interface IInspectableMetadata {
+	property: string;
+	options: IInspectOptions;
+}
