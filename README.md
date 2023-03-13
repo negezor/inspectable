@@ -67,16 +67,29 @@ import { Inspectable, Inspect } from 'inspectable';
 
 @Inspectable({/* options */})
 class APIRequest {
-    @Inspect
+    @Inspect()
     public method = 'pay';
 
     private token = 'super-private';
+
+    @Inspect({ nullable: false })
+    private signal = null;
+
+    @Inspect({ as: 'firstName' })
+    private name = 'john';
+
+    @Inspect({ compute: true })
+    public canRequest() {
+        return Boolean(this.token);
+    }
 }
 
 const request = new APIRequest();
 
 console.log(request);
 // APIRequest {
-//   method: 'pay'
+//   method: 'pay',
+//   firstName: 'john',
+//   canRequest: true
 // }
 ```
