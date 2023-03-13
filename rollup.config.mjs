@@ -1,15 +1,21 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineConfig } from 'rollup';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import typescriptPlugin from 'rollup-plugin-typescript2';
 
-import { tmpdir } from 'os';
-import { join as pathJoin } from 'path';
+import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
+import { join as pathJoin } from 'node:path';
 
 const cacheRoot = pathJoin(tmpdir(), '.rpt2_cache');
 
-const src = pathJoin(__dirname, 'src');
-const lib = pathJoin(__dirname, 'lib');
+const rootDir = pathJoin(fileURLToPath(import.meta.url), '..');
+
+const src = pathJoin(rootDir, 'src');
+const lib = pathJoin(rootDir, 'lib');
 
 // eslint-disable-next-line import/no-default-export
-export default {
+export default defineConfig({
 	input: pathJoin(src, 'index.ts'),
 	plugins: [
 		typescriptPlugin({
@@ -38,4 +44,4 @@ export default {
 			format: 'esm'
 		}
 	]
-};
+});
