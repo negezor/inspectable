@@ -39,6 +39,11 @@ export interface IInspectOptions {
 	 * @default true
 	 */
 	nullable?: boolean;
+
+	/**
+	 * Replaces the property name with an alias in the output
+	 */
+	as?: string;
 }
 
 export type IInspectNormalizedOptions = Required<IInspectOptions>;

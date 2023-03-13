@@ -34,7 +34,7 @@ export const Inspectable = <T, P = object>(
 						continue;
 					}
 
-					payload[property as keyof P] = value;
+					payload[propertyOptions.as as keyof P] = value;
 				}
 
 				return payload;
@@ -45,9 +45,13 @@ export const Inspectable = <T, P = object>(
 	}
 );
 
-const normalizeInspectOptions = (options: IInspectOptions): IInspectNormalizedOptions => ({
+const normalizeInspectOptions = (
+	property: string,
+	options: IInspectOptions
+): IInspectNormalizedOptions => ({
 	compute: options.compute ?? false,
-	nullable: options.nullable ?? true
+	nullable: options.nullable ?? true,
+	as: options.as ?? property
 });
 
 export const Inspect = (options: IInspectOptions = {}) => (
@@ -68,7 +72,7 @@ export const Inspect = (options: IInspectOptions = {}) => (
 
 		metadata.push({
 			property,
-			options: normalizeInspectOptions(options)
+			options: normalizeInspectOptions(property, options)
 		});
 	}
 );
