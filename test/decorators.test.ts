@@ -32,8 +32,8 @@ describe('Decorators', (): void => {
 
         Inspectable({
             serialize: (instance: InstanceType<typeof Klass>) => ({
-                method: instance.method
-            })
+                method: instance.method,
+            }),
         })(Klass);
 
         expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
@@ -44,11 +44,11 @@ describe('Decorators', (): void => {
 
         Inspectable({
             serialize: (instance: InstanceType<typeof Klass>) => ({
-                method: instance.method
+                method: instance.method,
             }),
             stringify: (instance, payload, context) => (
                 `Class [123] ${context.inspect(payload)}`
-            )
+            ),
         })(Klass);
 
         expect(inspect(new Klass())).toStrictEqual('Class [123] {\n  method: \'test\'\n}');

@@ -23,9 +23,9 @@ describe('inspectable', (): void => {
         const Klass = createFixtureClass();
 
         inspectable(Klass, {
-            serialize: instance => ({
-                method: instance.method
-            })
+            serialize: (instance) => ({
+                method: instance.method,
+            }),
         });
 
         expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
@@ -35,12 +35,12 @@ describe('inspectable', (): void => {
         const Klass = createFixtureClass();
 
         inspectable(Klass, {
-            serialize: instance => ({
-                method: instance.method
+            serialize: (instance) => ({
+                method: instance.method,
             }),
             stringify: (instance, payload, context) => (
                 `Class [123] ${context.inspect(payload)}`
-            )
+            ),
         });
 
         expect(inspect(new Klass())).toStrictEqual('Class [123] {\n  method: \'test\'\n}');
