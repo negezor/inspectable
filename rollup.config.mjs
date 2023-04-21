@@ -42,6 +42,21 @@ export default defineConfig({
         {
             file: pathJoin(lib, 'index.mjs'),
             format: 'esm'
+        },
+        {
+            file: pathJoin(lib, 'index.browser.mjs'),
+            format: 'esm',
+            plugins: [
+                {
+                    name: 'Non Node Fix',
+                    renderChunk: (code) => ({
+                        code: code.replace(
+                            "import { inspect } from 'util';",
+                            "const inspect = () => {}; inspect.custom = Symbol.for('nodejs.util.inspect.custom');"
+                        )
+                    })
+                }
+            ]
         }
     ]
 });

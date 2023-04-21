@@ -24,11 +24,16 @@
     ],
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
+    "module": "./lib/index.mjs",
+    "browser": "./lib/index.browser.mjs",
     "exports": {
         ".": {
+            "node": {
+                "import": "./lib/index.mjs",
+                "require": "./lib/index.js"
+            },
             "types": "./lib/index.d.ts",
-            "import": "./lib/index.mjs",
-            "require": "./lib/index.js"
+            "browser": "./lib/index.browser.mjs"
         }
     },
     "sideEffects": false,
