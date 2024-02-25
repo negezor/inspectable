@@ -16,7 +16,7 @@
 3. **Modern.** The library comes with native ESM support
 
 ## Installation
-> **[Node.js](https://nodejs.org/) 12.0.0 or newer is required**
+> **[Node.js](https://nodejs.org/) 20.0.0 or newer is required**
 
 - **Using `npm`** (recommended)
     ```shell
@@ -62,8 +62,10 @@ console.log(request);
 
 ### Decorators
 ```ts
-import 'reflect-metadata';
 import { Inspectable, Inspect } from 'inspectable';
+
+// INFO: Temp polyfill, more info https://github.com/microsoft/TypeScript/issues/55453#issuecomment-1687496648
+(Symbol as any).metadata ??= Symbol("Symbol.metadata");
 
 @Inspectable({/* options */})
 class APIRequest {
