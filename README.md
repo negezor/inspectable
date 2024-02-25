@@ -11,7 +11,7 @@
 
 ## Features
 
-1. **Self-Sufficient.** The library has zero dependencies (except decorators support).
+1. **Self-Sufficient.** The library has zero dependencies.
 2. **Reliable.** The library is written in **TypeScript** and covered by tests.
 3. **Modern.** The library comes with native ESM support
 
