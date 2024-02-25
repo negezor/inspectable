@@ -26,22 +26,22 @@ export default defineConfig({
             tsconfigOverride: {
                 outDir: lib,
                 rootDir: src,
-                include: [src]
-            }
-        })
+                include: [src],
+            },
+        }),
     ],
     external: [
-        'util'
+        'util',
     ],
     output: [
         {
             file: pathJoin(lib, 'index.js'),
             format: 'cjs',
-            exports: 'named'
+            exports: 'named',
         },
         {
             file: pathJoin(lib, 'index.mjs'),
-            format: 'esm'
+            format: 'esm',
         },
         {
             file: pathJoin(lib, 'index.browser.mjs'),
@@ -52,11 +52,11 @@ export default defineConfig({
                     renderChunk: (code) => ({
                         code: code.replace(
                             "import { inspect } from 'util';",
-                            "const inspect = () => {}; inspect.custom = Symbol.for('nodejs.util.inspect.custom');"
-                        )
-                    })
-                }
-            ]
-        }
-    ]
+                            "const inspect = () => {}; inspect.custom = Symbol.for('nodejs.util.inspect.custom');",
+                        ),
+                    }),
+                },
+            ],
+        },
+    ],
 });
