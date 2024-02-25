@@ -16,7 +16,7 @@
 3. **Modern.** The library comes with native ESM support
 
 ## Installation
-> **[Node.js](https://nodejs.org/) 12.0.0 or newer is required**
+> **[Node.js](https://nodejs.org/) 20.0.0 or newer is required**
 
 - **Using `npm`** (recommended)
     ```shell
