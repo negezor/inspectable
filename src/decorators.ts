@@ -12,21 +12,21 @@ export const kInspectProperties = Symbol('kInspectProperties');
 export const Inspectable = <T, P = object>(
     options: IInspectableOptions<T, P> = {},
 ) => (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (klass: InspectedClass): void => {
+    (klass: InspectedClass, context: ClassDecoratorContext): void => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         inspectable(klass, {
             ...options,
 
             serialize(instance) {
-                const payload = (options.serialize?.(instance) || {}) as P;
+                const payload = (options.serialize?.(instance) ?? {}) as P;
 
-                // eslint-disable-next-line @typescript-eslint/ban-types, max-len
-                for (const metadata of (Reflect.getMetadata(kInspectProperties, instance as Object) || [])) {
-                    const { property, options: propertyOptions } = metadata as IInspectableMetadata;
-
+                const metadata = (context.metadata?.[kInspectProperties] || []) as IInspectableMetadata[];
+                
+                for (const { property, options: propertyOptions } of metadata) {
                     let value = (instance as unknown as P)[property as keyof P];
 
                     if (typeof value === 'function' && propertyOptions.compute) {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                         value = value.call(instance);
                     }
 
@@ -40,8 +40,6 @@ export const Inspectable = <T, P = object>(
                 return payload;
             },
         });
-
-        return klass;
     }
 );
 
@@ -57,17 +55,14 @@ const normalizeInspectOptions = (
 export const Inspect = (options: IInspectOptions = {}) => (
     (
         target: InspectedClass,
-        property: string,
+        context: ClassMemberDecoratorContext,
     ): void => {
-        // eslint-disable-next-line max-len
-        const metadata = (Reflect.getMetadata(kInspectProperties, target) || []) as IInspectableMetadata[];
+        const property = context.name as string;
+
+        const metadata = (context.metadata?.[kInspectProperties] || []) as IInspectableMetadata[];
 
         if (metadata.length === 0) {
-            Reflect.defineMetadata(
-                kInspectProperties,
-                metadata,
-                target,
-            );
+            context.metadata![kInspectProperties] = metadata;
         }
 
         metadata.push({
