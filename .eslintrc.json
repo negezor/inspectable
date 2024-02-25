@@ -4,14 +4,13 @@
 		"node": true
 	},
 	"extends": [
-		"eslint:recommended",
-        "airbnb-base",
-        "airbnb-typescript/base",
-		"plugin:import/errors",
-		"plugin:import/warnings",
-		"plugin:import/typescript",
-		"plugin:import/recommended",
-		"plugin:@typescript-eslint/recommended"
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:import/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -29,12 +28,7 @@
         }
     },
 	"rules": {
-        "@typescript-eslint/indent": ["warn", 4],
-        "import/prefer-default-export": "off",
-        "no-restricted-syntax": ["error", "WithStatement"],
-        "comma-dangle": ["error", "always-multiline"],
-        "no-continue": "off",
-        "indent": "off"
+        "comma-dangle": ["error", "always-multiline"]
 	},
 	"overrides": [
 		{
