@@ -20,6 +20,7 @@ export const inspectable = <T, P = object>(
     Object.defineProperty(klass.prototype, inspect.custom, {
         value(depth: number, inspectContext: NodeInspectContext) {
             const context: IInspectableContext<P> = {
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 stylize: inspectContext.stylize,
                 inspect: (payload, options) => (
                     inspect(payload, {
@@ -30,9 +31,9 @@ export const inspectable = <T, P = object>(
                 ),
             };
 
-            const payload = serialize(this);
+            const payload = serialize(this as T);
 
-            return stringify(this, payload, context);
+            return stringify(this as T, payload, context);
         },
     });
 };
