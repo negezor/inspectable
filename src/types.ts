@@ -15,11 +15,7 @@ export interface IInspectableContext<P> {
 }
 
 export type InspectableSerialize<T, P> = (instance: T) => P;
-export type InspectableStringify<T, P> = (
-    instance: T,
-    payload: P,
-    context: IInspectableContext<P>
-) => string;
+export type InspectableStringify<T, P> = (instance: T, payload: P, context: IInspectableContext<P>) => string;
 
 export interface IInspectableOptions<T, P> {
     serialize?: InspectableSerialize<T, P>;

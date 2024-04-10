@@ -1,17 +1,16 @@
 import { inspectable } from './inspectable';
 import type {
-    IInspectableMetadata,
-    IInspectableOptions,
     IInspectNormalizedOptions,
     IInspectOptions,
+    IInspectableMetadata,
+    IInspectableOptions,
     InspectedClass,
 } from './types';
 
 export const kInspectProperties = Symbol('kInspectProperties');
 
-export const Inspectable = <T, P = object>(
-    options: IInspectableOptions<T, P> = {},
-) => (
+export const Inspectable =
+    <T, P = object>(options: IInspectableOptions<T, P> = {}) =>
     (klass: InspectedClass, context: ClassDecoratorContext): void => {
         inspectable(klass, {
             ...options,
@@ -38,23 +37,17 @@ export const Inspectable = <T, P = object>(
                 return payload;
             },
         });
-    }
-);
+    };
 
-const normalizeInspectOptions = (
-    property: string,
-    options: IInspectOptions,
-): IInspectNormalizedOptions => ({
+const normalizeInspectOptions = (property: string, options: IInspectOptions): IInspectNormalizedOptions => ({
     compute: options.compute ?? false,
     nullable: options.nullable ?? true,
     as: options.as ?? property,
 });
 
-export const Inspect = (options: IInspectOptions = {}) => (
-    (
-        target: InspectedClass,
-        context: ClassMemberDecoratorContext,
-    ): void => {
+export const Inspect =
+    (options: IInspectOptions = {}) =>
+    (target: InspectedClass, context: ClassMemberDecoratorContext): void => {
         const property = context.name as string;
 
         const metadata = (context.metadata?.[kInspectProperties] || []) as IInspectableMetadata[];
@@ -68,5 +61,4 @@ export const Inspect = (options: IInspectOptions = {}) => (
             property,
             options: normalizeInspectOptions(property, options),
         });
-    }
-);
+    };
