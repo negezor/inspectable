@@ -13,7 +13,6 @@ export const Inspectable = <T, P = object>(
     options: IInspectableOptions<T, P> = {},
 ) => (
     (klass: InspectedClass, context: ClassDecoratorContext): void => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         inspectable(klass, {
             ...options,
 
@@ -21,12 +20,11 @@ export const Inspectable = <T, P = object>(
                 const payload = (options.serialize?.(instance) ?? {}) as P;
 
                 const metadata = (context.metadata?.[kInspectProperties] || []) as IInspectableMetadata[];
-                
+
                 for (const { property, options: propertyOptions } of metadata) {
                     let value = (instance as unknown as P)[property as keyof P];
 
                     if (typeof value === 'function' && propertyOptions.compute) {
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                         value = value.call(instance);
                     }
 

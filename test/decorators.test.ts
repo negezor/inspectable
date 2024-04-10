@@ -23,7 +23,6 @@ const useCreateFixtureDecoratorContext = () => {
         classContext: (): ClassDecoratorContext => ({
             name: 'Request',
             metadata,
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             addInitializer() {},
             kind: 'class',
         }),
@@ -31,13 +30,10 @@ const useCreateFixtureDecoratorContext = () => {
         memberContext: (name: string, kind: ClassMemberDecoratorContext['kind']): ClassMemberDecoratorContext => ({
             name: name,
             metadata,
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             addInitializer() {},
             kind: kind,
             access: {
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 get() {},
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 set() {},
                 has() { return true },
             },
@@ -105,7 +101,7 @@ describe('Decorators', (): void => {
         const Klass = createFixtureClass();
 
         const { classContext, memberContext } = useCreateFixtureDecoratorContext();
-        
+
         Inspectable({})(Klass, classContext());
 
         Inspect({ nullable: false })(Klass.prototype, memberContext('signal', 'field'));
@@ -139,7 +135,7 @@ describe('Decorators', (): void => {
 
     it('shouldn\'t work inspect with disabled compute', (): void => {
         const Klass = createFixtureClass();
-        
+
         const { classContext, memberContext } = useCreateFixtureDecoratorContext();
 
         Inspectable({})(Klass, classContext());

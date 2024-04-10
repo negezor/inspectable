@@ -20,7 +20,6 @@ export const inspectable = <T, P = object>(
     Object.defineProperty(klass.prototype, inspect.custom, {
         value(depth: number, inspectContext: NodeInspectContext) {
             const context: IInspectableContext<P> = {
-                // eslint-disable-next-line @typescript-eslint/unbound-method
                 stylize: inspectContext.stylize,
                 inspect: (payload, options) => (
                     inspect(payload, {

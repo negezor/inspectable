@@ -1,9 +1,7 @@
 import { inspect } from 'util';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: any[]) => T;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type InspectedClass = any;
 
 export type NodeInspectContext = typeof inspect.defaultOptions & {
