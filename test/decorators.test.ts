@@ -1,4 +1,6 @@
-import { inspect } from 'util';
+import { inspect } from 'node:util';
+import { describe, it } from 'node:test';
+import { strictEqual } from 'node:assert';
 
 import { Inspectable, Inspect } from '../src';
 
@@ -51,7 +53,7 @@ describe('Decorators', (): void => {
 
         Inspectable({})(Klass, classContext());
 
-        expect(inspect(new Klass())).toStrictEqual('Request {}');
+        strictEqual(inspect(new Klass()), 'Request {}');
     });
 
     it('should have only one property', (): void => {
@@ -65,7 +67,7 @@ describe('Decorators', (): void => {
             }),
         })(Klass, classContext());
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  method: \'test\'\n}');
     });
 
     it('should allow you to do your own stringify', (): void => {
@@ -82,7 +84,7 @@ describe('Decorators', (): void => {
             ),
         })(Klass, classContext());
 
-        expect(inspect(new Klass())).toStrictEqual('Class [123] {\n  method: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Class [123] {\n  method: \'test\'\n}');
     });
 
     it('should work with inspect decorator', (): void => {
@@ -94,7 +96,7 @@ describe('Decorators', (): void => {
 
         Inspect()(Klass.prototype, memberContext('method', 'field'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  method: \'test\'\n}');
     });
 
     it('should work if inspect with non nullable', (): void => {
@@ -106,7 +108,7 @@ describe('Decorators', (): void => {
 
         Inspect({ nullable: false })(Klass.prototype, memberContext('signal', 'field'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {}');
+        strictEqual(inspect(new Klass()), 'Request {}');
     });
 
     it('should work if inspect with nullable', (): void => {
@@ -118,7 +120,7 @@ describe('Decorators', (): void => {
 
         Inspect({ nullable: true })(Klass.prototype, memberContext('signal', 'field'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  signal: null\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  signal: null\n}');
     });
 
     it('should work inspect with compute', (): void => {
@@ -130,7 +132,7 @@ describe('Decorators', (): void => {
 
         Inspect({ compute: true })(Klass.prototype, memberContext('canRequest', 'method'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  canRequest: true\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  canRequest: true\n}');
     });
 
     it('shouldn\'t work inspect with disabled compute', (): void => {
@@ -142,7 +144,7 @@ describe('Decorators', (): void => {
 
         Inspect({ compute: false })(Klass.prototype, memberContext('canRequest', 'method'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  canRequest: [Function: canRequest]\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  canRequest: [Function: canRequest]\n}');
     });
 
     it('should work inspect with alias', (): void => {
@@ -154,6 +156,6 @@ describe('Decorators', (): void => {
 
         Inspect({ as: 'type' })(Klass.prototype, memberContext('method', 'field'));
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  type: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  type: \'test\'\n}');
     });
 });

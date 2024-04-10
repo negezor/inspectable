@@ -1,4 +1,6 @@
-import { inspect } from 'util';
+import { inspect } from 'node:util';
+import { describe, it } from 'node:test';
+import { strictEqual } from 'node:assert';
 
 import { inspectable } from '../src';
 
@@ -16,7 +18,7 @@ describe('inspectable', (): void => {
 
         inspectable(Klass);
 
-        expect(inspect(new Klass())).toStrictEqual('Request {}');
+        strictEqual(inspect(new Klass()), 'Request {}');
     });
 
     it('should have only one property', (): void => {
@@ -28,7 +30,7 @@ describe('inspectable', (): void => {
             }),
         });
 
-        expect(inspect(new Klass())).toStrictEqual('Request {\n  method: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Request {\n  method: \'test\'\n}');
     });
 
     it('should allow you to do your own stringify', (): void => {
@@ -43,6 +45,6 @@ describe('inspectable', (): void => {
             ),
         });
 
-        expect(inspect(new Klass())).toStrictEqual('Class [123] {\n  method: \'test\'\n}');
+        strictEqual(inspect(new Klass()), 'Class [123] {\n  method: \'test\'\n}');
     });
 });
