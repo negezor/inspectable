@@ -60,6 +60,7 @@ export const Inspect = (options: IInspectOptions = {}) => (
         const metadata = (context.metadata?.[kInspectProperties] || []) as IInspectableMetadata[];
 
         if (metadata.length === 0) {
+            // biome-ignore lint/style/noNonNullAssertion: context.metadata is readonly
             context.metadata![kInspectProperties] = metadata;
         }
 

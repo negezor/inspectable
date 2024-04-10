@@ -1,7 +1,8 @@
-import { inspect } from 'util';
+import type { inspect } from 'node:util';
 
-export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: any[]) => T;
+export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: unknown[]) => T;
 
+// biome-ignore lint/suspicious/noExplicitAny: we can't cast class
 export type InspectedClass = any;
 
 export type NodeInspectContext = typeof inspect.defaultOptions & {
