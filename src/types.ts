@@ -1,5 +1,6 @@
 import type { inspect } from 'node:util';
 
+// biome-ignore lint/suspicious/noExplicitAny: can't compile with constructors
 export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: any[]) => T;
 
 // biome-ignore lint/suspicious/noExplicitAny: we can't cast class
