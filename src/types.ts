@@ -1,6 +1,6 @@
 import type { inspect } from 'node:util';
 
-export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: unknown[]) => T;
+export type Constructor<T = Record<string | number | symbol, unknown>> = new (...args: any[]) => T;
 
 // biome-ignore lint/suspicious/noExplicitAny: we can't cast class
 export type InspectedClass = any;
